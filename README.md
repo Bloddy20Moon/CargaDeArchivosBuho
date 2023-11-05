@@ -186,6 +186,6 @@ function uploadFile(name){
 
    * El archivo esta en el github, si deseas entrar, [**pulsa aqui**](https://github.com/Bloddy20Moon/CargaDeArchivosBuho)
 
+https://github.com/Bloddy20Moon/CargaDeArchivosBuho/assets/118792974/bdb4bd6a-2a27-4706-8827-c61f39e4b617
 
 
-https://github.com/Bloddy20Moon/BuhoSep2023/assets/118792974/42f0f6b8-4e74-4008-9ffc-41d6897af2f8
