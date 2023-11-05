@@ -176,7 +176,7 @@ function uploadFile(name){
 ?>
 ```
 + Paso 5
-   * Los archivos de guardaría en la carpeta C:\xampp\htdocs\CargaBuho\php\files
+   * Los archivos de guardaría en la carpeta C:\xampp\htdocs\CargaBuho\php\files (Crear la carpeta files en la carpeta PHP)
 ![image](https://github.com/Bloddy20Moon/CargaDeArchivosBuho/assets/118792974/4d0ded93-5930-41ea-aae3-293c0247aec0)
  
 + Paso 6
