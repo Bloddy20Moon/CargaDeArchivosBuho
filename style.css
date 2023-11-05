@@ -65,7 +65,7 @@ section .row{
   justify-content: space-between;
 }
 section .row i{
-  color: #6990F2;
+  color: #3a64cf;
   font-size: 30px;
 }
 section .details span{
@@ -91,7 +91,7 @@ section .details span{
 .content .progress-bar .progress{
   height: 100%;
   width: 0%;
-  background: #6990F2;
+  background: #105068;
   border-radius: inherit;
 }
 .uploaded-area{
