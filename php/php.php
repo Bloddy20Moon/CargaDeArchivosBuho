@@ -6,7 +6,7 @@ if (!empty($_FILES['file']['name'])) {
   if (!file_exists($folder_name)) {
     mkdir($folder_name, 0777, true);
   }
-  $file_up_name = time() . '_' . $file_name; // Agregar timestamp al nombre del archivo
+  $file_up_name = $file_name; // Agregar timestamp al nombre del archivo
   move_uploaded_file($tmp_name, $folder_name . "/" . $file_up_name);
   echo "Archivo subido exitosamente.";
 }

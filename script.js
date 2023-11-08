@@ -1,7 +1,7 @@
+const dropArea = document.getElementById("dropArea");
 const form = document.querySelector("form");
 const fileInput = document.querySelector(".file-input");
 const progressArea = document.querySelector(".progress-area");
-const fileContent = document.getElementById("file-content");
 const uploadedArea = document.querySelector(".uploaded-area");
 
 form.addEventListener("click", () => {
@@ -31,7 +31,7 @@ function uploadFile(name) {
     let progressHTML = `<li class="row">
                           <i class="fa fa-file"></i>
                           <div class="content">
-                            <div class="details">
+                            <div class "details">
                               <span class="name">${name} • Uploading</span>
                               <span class="percent">${fileLoaded}%</span>
                             </div>
@@ -59,7 +59,7 @@ function uploadFile(name) {
                           </li>`;
         uploadedArea.classList.remove("onprogress");
         uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML);
-      }, 3000); // Retraso de 2 segundos (2000 ms)
+      }, 3000); // Retraso de 3 segundos (3000 ms)
     }
   });
 
@@ -69,17 +69,41 @@ function uploadFile(name) {
 
 function downloadFile(name) {
   // Crea un enlace temporal para la descarga
-  const downloadLink = document.createElement('a');
-  downloadLink.href = `php/files/${name}/${name}`;
-  downloadLink.download = name; // Establece el nombre de archivo para la descarga
-  downloadLink.style.display = 'none';
+  //const downloadLink = document.createElement('a');
+  const encodedName = encodeURIComponent(name); // Codifica el nombre del archivo
+
+  //downloadLink.href = `php/files/${encodedName}/${encodedName}`;
+  //downloadLink.download = name; // Establece el nombre de archivo para la descarga
+  //downloadLink.style.display = 'none';
 
   // Agrega el enlace al cuerpo del documento y simula un clic
-  document.body.appendChild(downloadLink);
-  downloadLink.click();
+  //document.body.appendChild(downloadLink);
+  //downloadLink.click();
 
   // Elimina el enlace temporal
-  document.body.removeChild(downloadLink);
+  //document.body.removeChild(downloadLink);
+  const archivoURL = `php/files/${encodedName}/${encodedName}`
+
+  fetch(archivoURL)
+  .then(function(response) {
+    return response.blob();
+  })
+  .then(function(blob) {
+    // Crear un objeto URL para el blob
+    var blobURL = window.URL.createObjectURL(blob);
+
+    // Crear un elemento de hipervínculo
+    var link = document.createElement('a');
+    link.href = blobURL;
+    link.download = name;
+
+    // Simular un clic en el hipervínculo para iniciar la descarga
+    link.click();
+
+    // Liberar el objeto URL
+    window.URL.revokeObjectURL(blobURL);
+  });
+
 }
 
 
@@ -92,9 +116,9 @@ function deleteFile(name) {
     .then(data => {
       if (data.success) {
         // Eliminación exitosa, puedes eliminar la entrada de la lista.
-        const uploadedItem = document.querySelector(`.uploaded-area .row .name:contains('${name}')`);
+        const uploadedItem = document.querySelector(`.uploaded-area .row .details .name:contains('${name}')`);
         if (uploadedItem) {
-          uploadedItem.parentElement.parentElement.remove();
+          uploadedItem.parentElement.parentElement.parentElement.remove();
         }
       } else {
         // La eliminación no tuvo éxito, muestra un mensaje de error o maneja la situación de otra manera.
@@ -105,7 +129,7 @@ function deleteFile(name) {
       console.error("Error al eliminar el archivo:", error);
     });
 }
-// Maneja el evento de soltar en dropArea
+
 dropArea.addEventListener("dragover", (e) => {
   e.preventDefault();
   dropArea.classList.add("on-drag"); // Agrega una clase para resaltar el área de soltar
@@ -123,9 +147,12 @@ dropArea.addEventListener("drop", (e) => {
 
   if (files.length > 0) {
     const file = files[0];
+    let fileName = file.name;
 
-    // Aquí puedes guardar el archivo localmente o realizar otras acciones.
-    // Ejemplo de notificación:
-    alert(`Archivo ${file.name} descargado correctamente.`);
+    // Reemplaza espacios en blanco con guiones bajos
+    fileName = fileName.replace(/ /g, '_');
+    
+    // Continúa con el manejo del archivo, por ejemplo, puedes notificar que el archivo se ha soltado.
+    alert(`Archivo ${fileName} soltado correctamente.`);
   }
 });
