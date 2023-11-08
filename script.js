@@ -1,6 +1,7 @@
 const form = document.querySelector("form");
 const fileInput = document.querySelector(".file-input");
 const progressArea = document.querySelector(".progress-area");
+const fileContent = document.getElementById("file-content");
 const uploadedArea = document.querySelector(".uploaded-area");
 
 form.addEventListener("click", () => {
@@ -67,11 +68,20 @@ function uploadFile(name) {
 }
 
 function downloadFile(name) {
-  // Agrega el código para descargar el archivo con el nombre proporcionado.
-  // Puedes usar la ventana emergente o redirigir a una página para la descarga.
-  // Por ejemplo, abrir una nueva ventana con el archivo.
-  window.open(`php/files/${name}`);
+  // Crea un enlace temporal para la descarga
+  const downloadLink = document.createElement('a');
+  downloadLink.href = `php/files/${name}/${name}`;
+  downloadLink.download = name; // Establece el nombre de archivo para la descarga
+  downloadLink.style.display = 'none';
+
+  // Agrega el enlace al cuerpo del documento y simula un clic
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+
+  // Elimina el enlace temporal
+  document.body.removeChild(downloadLink);
 }
+
 
 function deleteFile(name) {
   // Agrega el código para eliminar el archivo con el nombre proporcionado.
@@ -95,3 +105,27 @@ function deleteFile(name) {
       console.error("Error al eliminar el archivo:", error);
     });
 }
+// Maneja el evento de soltar en dropArea
+dropArea.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropArea.classList.add("on-drag"); // Agrega una clase para resaltar el área de soltar
+});
+
+dropArea.addEventListener("dragleave", () => {
+  dropArea.classList.remove("on-drag"); // Elimina la clase al salir del área de soltar
+});
+
+dropArea.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropArea.classList.remove("on-drag"); // Elimina la clase cuando se suelta el archivo
+
+  const files = e.dataTransfer.files;
+
+  if (files.length > 0) {
+    const file = files[0];
+
+    // Aquí puedes guardar el archivo localmente o realizar otras acciones.
+    // Ejemplo de notificación:
+    alert(`Archivo ${file.name} descargado correctamente.`);
+  }
+});
