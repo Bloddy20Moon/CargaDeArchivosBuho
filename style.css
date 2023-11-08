@@ -139,3 +139,52 @@ svg {
   background-image: linear-gradient(to bottom, rgba(14, 65, 102, 0.86), #0e4166);
   z-index: 1; /* Añade esta propiedad para el fondo SVG, debe ser inferior al del contenido */
 }
+.uploaded-file {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.file-name {
+  flex-grow: 1;
+  padding: 0 10px;
+}
+
+.file-actions {
+  display: flex;
+}
+/* Estilo para el botón Descargar */
+.download-button {
+  background-color: #4CAF50; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  margin-right: 10px; /* Margen derecho para separar del botón Eliminar */
+}
+
+.download-button:hover {
+  background-color: #45a049; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilo para el botón Eliminar */
+.delete-button {
+  background-color: #f44336; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+}
+
+.delete-button:hover {
+  background-color: #d32f2f; /* Color de fondo al pasar el mouse */
+}
