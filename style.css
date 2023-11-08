@@ -20,7 +20,7 @@ body{
   background: #6990F2;
 }
 .wrapper{
-  width: 430px;
+  width: 460px;
   background: #fff;
   border-radius: 5px;
   padding: 30px;
@@ -58,7 +58,7 @@ section .row{
   margin-bottom: 10px;
   background: #E9F0FF;
   list-style: none;
-  padding: 15px 20px;
+  padding: 15px 0px;
   border-radius: 5px;
   display: flex;
   align-items: center;
