@@ -182,8 +182,21 @@ function deleteFile(name) {
   })
     .then(response => response.text())
     .then(data => {
-      console.log(data); // Imprimirá el mensaje devuelto por el archivo PHP en la consola
+  
+        // Eliminación exitosa, puedes eliminar la entrada de la lista en la página web.
+        const uploadedItems = document.querySelectorAll('.uploaded-area .row .details .name');
+        for (let i = 0; i < uploadedItems.length; i++) {
+          if (uploadedItems[i].textContent.includes(name)) {
+            uploadedItems[i].closest('.row').remove();
+          }
+        }
+      
+      
+      // Imprimirá el mensaje devuelto por el archivo PHP en la consola
     });
+
+
+    
 }
 
 
