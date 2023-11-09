@@ -12,11 +12,7 @@ fileInput.onchange = ({ target }) => {
   let file = target.files[0];
   if (file) {
     let fileName = file.name;
-    /*if (fileName.length >= 12) {
-      let splitName = fileName.split('.');
-      fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
-    }*/
-    //console.log(fileName);
+   
     uploadFile(fileName);
   }
 };
@@ -72,19 +68,13 @@ function uploadFile(name) {
 
 function downloadFile(name) {
   // Crea un enlace temporal para la descarga
-  //const downloadLink = document.createElement('a');
+
   const encodedName = encodeURIComponent(name); // Codifica el nombre del archivo
 
-  //downloadLink.href = `php/files/${encodedName}/${encodedName}`;
-  //downloadLink.download = name; // Establece el nombre de archivo para la descarga
-  //downloadLink.style.display = 'none';
-
-  // Agrega el enlace al cuerpo del documento y simula un clic
-  //document.body.appendChild(downloadLink);
-  //downloadLink.click();
+ 
 
   // Elimina el enlace temporal
-  //document.body.removeChild(downloadLink);
+
   const archivoURL = `php/files/${encodedName}/${encodedName}`
 
   fetch(archivoURL)
@@ -109,71 +99,7 @@ function downloadFile(name) {
 
 }
 
-/*function deleteFile( name) {
-  fetch(`php/delete.php?file=${name}`, {
-    method: 'GET' // Utiliza el método HTTP DELETE para la eliminación
-  })
-    .then(response => response.text())
-    .then(data => {
-      
-        // Eliminación exitosa, puedes eliminar la entrada de la lista.
-        const uploadedItems = document.querySelectorAll(`.uploaded-area .row .details .name`);
-        for (let i = 0; i < uploadedItems.length; i++) {
-          if (uploadedItems[i].textContent.includes(name)) {
-            uploadedItems[i].closest(".row").remove();
-          }
-        }
-      
-    })
-}*/
 
-
-/*function deleteFile( name) {
-  fetch(`php/delete.php?file=${name}`, {
-    method: 'GET' // Utiliza el método HTTP DELETE para la eliminación
-  })
-  //Chatgtp me dijo :v
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        // Eliminación exitosa, puedes eliminar la entrada de la lista.
-        const uploadedItems = document.querySelectorAll(`.uploaded-area .row .details .name`);
-        for (let i = 0; i < uploadedItems.length; i++) {
-          if (uploadedItems[i].textContent.includes(name)) {
-            uploadedItems[i].closest(".row").remove();
-          }
-        }
-      } else {
-        // La eliminación no tuvo éxito, muestra un mensaje de error.
-        console.error(data.message);
-      } 
-    })
-    .catch(error => {
-      console.error("Error al eliminar el archivo:", error);
-    });
-}*/
-
- /*function deleteFile(name) {
-  // Elimina el archivo y la carpeta asociada
-  fetch(`php/files/delete.php?file=${name}`, {
-    method: 'GET'
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        // Eliminación exitosa, puedes eliminar la entrada de la lista en la página web.
-        const uploadedItems = document.querySelectorAll('.uploaded-area .row .details .name');
-        for (let i = 0; i < uploadedItems.length; i++) {
-          if (uploadedItems[i].textContent.includes(name)) {
-            uploadedItems[i].closest('.row').remove();
-          }
-        }
-      } else {
-        // La eliminación no tuvo éxito, muestra un mensaje de error.
-        console.error(data.message);
-      }
-    });
-}*/
 
 function deleteFile(name) {
   
@@ -195,12 +121,7 @@ function deleteFile(name) {
       // Imprimirá el mensaje devuelto por el archivo PHP en la consola
     });
 
-
-    
 }
-
-
-
 
 dropArea.addEventListener("dragover", (e) => {
   e.preventDefault();
