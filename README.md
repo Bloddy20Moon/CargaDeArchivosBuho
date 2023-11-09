@@ -1,6 +1,7 @@
 # CARGA DE DATOS CON PHP NOVIEMBRE
 ## INTEGRANTES:
 * Adrian Josue Alvarado Sanchez
+* Joandi Casimiro
 >Proposito: Registrar los Datos por Medio de una pagina a una carpeta llamada "files"
 ###### RECOMENDACION:
 ###### Tener instalador el [**XAAMP**](https://www.apachefriends.org/es/index.html)
